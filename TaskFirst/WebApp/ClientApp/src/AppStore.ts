@@ -1,20 +1,12 @@
-// src/stores/CounterStore.ts
-import { makeAutoObservable } from 'mobx';
+import {makeObservable, observable} from 'mobx';
 
-class CounterStore {
-    count = 0;
+export default class Store {
+    title = () => 'Switcher';
 
+    @observable
+    tabIndex = 0;
+    
     constructor() {
-        makeAutoObservable(this);
-    }
-
-    increment() {
-        this.count++;
-    }
-
-    decrement() {
-        this.count--;
+        makeObservable(this);
     }
 }
-
-export const counterStore = new CounterStore();

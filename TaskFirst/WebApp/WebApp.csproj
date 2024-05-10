@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="ClientApp\my-app\" />
+      <Folder Include="ClientApp\src\Common\" />
     </ItemGroup>
 
 </Project>
