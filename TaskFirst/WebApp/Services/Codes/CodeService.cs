@@ -17,4 +17,20 @@ public class CodeService(AppDbContext db) : ICodeService
         await db.Database.ExecuteSqlRawAsync("TRUNCATE TABLE Items; DBCC CHECKIDENT ('Items', RESEED, 1);");
         await db.BulkCopyListAsync("Items", items, x => x.Code, x => x.Value);
     }
+
+    public List<Item> Search(int? code, string value, int skip = 0, int take = 10)
+    {
+        var query = db.Items.AsQueryable();
+        if (code > 0)
+            query = query.Where(x => x.Code == code);
+
+        if (!string.IsNullOrWhiteSpace(value))
+            query = query.Where(x => x.Value.ToLower().Contains(value.ToLower()));
+
+        var items = query
+            .TakePage(skip, take)
+            .ToList();
+
+        return items;
+    }
 }
