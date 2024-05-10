@@ -1,14 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using WebApp.Services.Codes;
 
 namespace WebApp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class CodesController : ControllerBase
+[Route("codes")]
+public class CodesController(ICodeService codes) : ControllerBase
 {
-    [HttpGet]
-    public IActionResult Get()
+    [HttpPost]
+    public async Task<IActionResult> Post([FromBody] List<Dictionary<int, string>> items)
     {
-        return Ok("Works!");
+        await codes.InsertBunchAsync(items);
+        return Ok();
     }
 }
