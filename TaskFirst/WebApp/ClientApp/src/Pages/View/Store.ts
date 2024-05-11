@@ -73,11 +73,7 @@ export default class Store {
     @action
     updateCode = (code: string) => {
         let number = parseInt(code);
-        if (isNaN(number)) {
-            this.code = null;
-        } else {
-            this.code = number;
-        }
+        this.code = isNaN(number) ? null : number;
     }
 
     @action
