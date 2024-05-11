@@ -5,7 +5,7 @@ import ViewPageStore from './Pages/View/Store.ts'
 export default class Store {
 
     @observable
-    tabIndex = 0;
+    tabIndex = 1;
     
     savePage = new SavePageStore()
     viewPage = new ViewPageStore()

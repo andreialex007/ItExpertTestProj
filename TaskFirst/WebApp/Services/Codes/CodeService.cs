@@ -36,6 +36,7 @@ public class CodeService(AppDbContext db) : ICodeService
         var filtered = query.Count();
 
         var items = query
+            .OrderBy(x => x.Id)
             .TakePage(skip, take)
             .ToList();
 

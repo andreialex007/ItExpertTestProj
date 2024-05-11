@@ -1,6 +1,6 @@
 import {action, makeObservable, observable} from 'mobx';
 import data from './SampleData.json';
-import axios from "axios";
+import axios from "./../../Common/axiosConfig.ts";
 
 export default class Store {
 
