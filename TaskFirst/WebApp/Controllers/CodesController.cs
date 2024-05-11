@@ -44,7 +44,11 @@ public class CodesController(ICodeService codes) : ControllerBase
     /// <param name="take">Number of entries to take (default is 10).</param>
     /// <returns>A list of codes matching the criteria.</returns>
     [HttpGet]
-    public IActionResult Get([FromQuery] int? code, [FromQuery] string value, [FromQuery] int skip = 0, [FromQuery] int take = 10)
+    public IActionResult Get(
+        [FromQuery] int? code,
+        [FromQuery] string value,
+        [FromQuery] int skip = 0,
+        [FromQuery] int take = 10)
     {
         var result = codes.Search(code, value, skip, take);
         return Ok(result);
